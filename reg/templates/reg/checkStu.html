@@ -1,0 +1,11 @@
+<h1>รายชื่อนักเรียนที่เรียนวิชา {{subject}}</h1>
+
+{% for student in list_students %}
+    <li> {{student.id_stu.id_stu}} {{student.id_stu.name_stu}}</li>
+{% endfor %}
+
+
+<br>
+<br>
+<br>
+<input type="button" onclick="location.href={% url 'rv_search' %};" value="ย้อนกลับ">

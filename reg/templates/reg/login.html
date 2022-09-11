@@ -1,0 +1,15 @@
+{% extends 'reg/layout.html' %}
+{% block body %}
+{% if message %}
+{{ message }}
+{% endif %}
+<h1>Hello</h1>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="Password">
+    <br>
+    <br>
+    <input type="submit" value="login">
+</form>
+{% endblock %}

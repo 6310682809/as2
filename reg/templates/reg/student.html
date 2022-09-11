@@ -1,0 +1,33 @@
+<h1>ค้นหารายชื่อนักเรียน</h1>
+
+<form action="{% url 'student' %}" method="post">
+    {% csrf_token %}
+    <h3>ชื่อนักเรียน</h3>
+    <input type="text" name="search_username" placeholder="ชื่อนักเรียน">
+    <input type="submit" value="ค้นหา">
+</form>
+
+
+<h3>{{search_username}}</h3>
+{% if students and search_username%}
+    <ul>
+    {% for student in students %}
+        {% if search_username in student.name_stu %}
+        <form action="{% url 'checkSub' %}" method="post">
+        {% csrf_token %}
+        <li>{{student.id_stu}} {{student.name_stu}} 
+            <button type="submit" name = "student" value = "{{student.id_stu}}">รายชื่อวิชาที่ลง</button>
+        </li>
+        </form>
+        {% endif %}
+        <br>
+    {% empty %}
+        <li>No Student.</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+<br>
+<br>
+<br>
+<input type="button" onclick="location.href={% url 'rv_index_student' %};" value="ย้อนกลับ">

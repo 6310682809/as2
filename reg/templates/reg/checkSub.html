@@ -1,0 +1,12 @@
+<h1>รายชื่อวิชาที่ลงของที่นักเรียน {{student}}</h1>
+
+{% for subject in list_subjects %}
+    <li> {{subject.id_sj.id_sj}} {{subject.id_sj.name_sj}}</li>
+{% endfor %}
+
+
+
+<br>
+<br>
+<br>
+<input type="button" onclick="location.href={% url 'rv_student' %};" value="ย้อนกลับ">
